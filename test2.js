@@ -29,7 +29,6 @@ function init() {
 	camera = new THREE.Camera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 
 	// create the Scene
-	scene = new THREE.Scene();
 	
 	// ## Begining of the Skybox Code
 	

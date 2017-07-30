@@ -7,7 +7,6 @@
 var startTime	= Date.now();
 var container;
 var camera, scene, renderer, stats;
-var skyboxMesh;
 rollLeft = 0;
 rollRight = 0;
 pitchUp = 0;
@@ -23,7 +22,6 @@ animate();
 // ## Initialize everything
 function init() {
 	// test if webgl is supported
-	if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 	// create the camera
 	camera = new THREE.Camera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
@@ -35,7 +33,20 @@ function init() {
 
 				scene = new THREE.Scene();
 				scene.background = textureCube;
+var ambient = new THREE.AmbientLight( 0x050505 );
+				scene.add( ambient );
 
+				directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
+				directionalLight.position.set( 2, 1.2, 10 ).normalize();
+				scene.add( directionalLight );
+
+				directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+				directionalLight.position.set( - 2, 1.2, -10 ).normalize();
+				scene.add( directionalLight );
+
+				pointLight = new THREE.PointLight( 0xffaa00, 2 );
+				pointLight.position.set( 2000, 1200, 10000 );
+				scene.add( pointLight );
 	// ## End of the Skybox Code
 
 	// create the container element
@@ -48,10 +59,6 @@ function init() {
 	container.appendChild( renderer.domElement );
 	
 	// init the Stats and append it to the Dom - performance vuemeter
-	stats = new Stats();
-	stats.domElement.style.position = 'absolute';
-	stats.domElement.style.top = '0px';
-	container.appendChild( stats.domElement );
 }
 
 // ## Animate and Display the Scene
