@@ -54,9 +54,41 @@
 
 			var directionalLight, pointLight;
 
-
-
-
+			rollLeft = 0;
+rollRight = 0;
+pitchUp = 0;
+pitchDown = 0;
+yawLeft = 0;
+yawRight = 0;
+var keyDown = function(event){
+    if (event.altKey){
+        return;
+    }
+    switch(event.keyCode){
+        case 65: rollLeft = 1; break;
+        case 68: rollRight = 1; break;
+        case 38: pitchUp = 1; break;
+        case 40: pitchDown = 1; break;
+        case 37: yawLeft = 1; break;
+        case 39: yawRight = 1; break;
+    }
+}
+var keyUp = function(event){
+    if (event.altKey){
+        return;
+    }
+    switch(event.keyCode){
+        case 65: rollLeft = 0; break;
+        case 68: rollRight = 0; break;
+        case 38: pitchUp = 0; break;
+        case 40: pitchDown = 0; break;
+        case 37: yawLeft = 0; break;
+        case 39: yawRight = 0; break;
+        //Todo: Strafing
+    }
+}
+document.addEventListener('keydown',keyDown,false);
+    document.addEventListener('keyup',keyUp,false);
 			init();
 			animate();
 
@@ -131,7 +163,9 @@
 
 				var timer = -0.0002 * Date.now();
 
-				
+				camera.rotateX(yawRight-yawLeft);
+ 	camera.rotateY(pitchUp-pitchDown);
+ 	camera.rotateZ(rollRight-rollLeft);
 
 				renderer.render( scene, camera );
 
