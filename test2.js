@@ -34,7 +34,7 @@ function init() {
 	// ## Begining of the Skybox Code
 	
 	var textureCube = new THREE.CubeTextureLoader()
-					.setPath( 'Bridge2/')
+					.setPath( 'images/Bridge2/')
 					.load( [ 'posx.jpg', 'negx.jpg', 'posy.jpg', 'negy.jpg', 'posz.jpg', 'negz.jpg' ] );
 
 				scene = new THREE.Scene();
