@@ -14,7 +14,12 @@ var skyboxMesh;
 init();
 // make it move			
 animate();
-
+rollLeft = 0;
+rollRight = 0;
+pitchUp = 0;
+pitchDown = 0;
+yawLeft = 0;
+yawRight = 0;
 // ## Initialize everything
 function init() {
 	// test if webgl is supported
@@ -78,14 +83,41 @@ function animate() {
 	stats.update();
 }
 
-
+var keyDown = function(event){
+    if (event.altKey){
+        return;
+    }
+    switch(event.keyCode){
+        case 65: rollLeft = 1; break;
+        case 68: rollRight = 1; break;
+        case 38: pitchUp = 1; break;
+        case 40: pitchDown = 1; break;
+        case 37: yawLeft = 1; break;
+        case 39: yawRight = 1; break;
+    }
+}
+var keyUp = function(event){
+    if (event.altKey){
+        return;
+    }
+    switch(event.keyCode){
+        case 65: rollLeft = 0; break;
+        case 68: rollRight = 0; break;
+        case 38: pitchUp = 0; break;
+        case 40: pitchDown = 0; break;
+        case 37: yawLeft = 0; break;
+        case 39: yawRight = 0; break;
+        //Todo: Strafing
+    }
+}
 // ## Render the 3D Scene
 function render() {
 	// move the camera based on a timer
 	var timer = - new Date().getTime() * 0.0002; 
-	camera.rotation.x = 1000 * Math.cos( timer );
-	camera.rotation.z = 1000 * Math.sin( timer );
- 
+	
+ 	camera.rotateX(yawRight-yawLeft);
+ 	camera.rotateY(pitchUp-pitchDown);
+ 	camera.rotateZ(rollRight-rollLeft);
 
 	// actually display the scene in the Dom element
 	renderer.render( scene, camera );
