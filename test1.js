@@ -8,18 +8,18 @@ var startTime	= Date.now();
 var container;
 var camera, scene, renderer, stats;
 var skyboxMesh;
-
-// ## bootstrap functions
-// initialiaze everything
-init();
-// make it move			
-animate();
 rollLeft = 0;
 rollRight = 0;
 pitchUp = 0;
 pitchDown = 0;
 yawLeft = 0;
 yawRight = 0;
+// ## bootstrap functions
+// initialiaze everything
+init();
+// make it move			
+animate();
+
 // ## Initialize everything
 function init() {
 	// test if webgl is supported
