@@ -30,7 +30,7 @@ function init() {
 
 	// create the Scene
 	var textureCube = new THREE.CubeTextureLoader()
-					.setPath( 'textures/cube/Bridge2/')
+					.setPath( 'images/Bridge2/')
 					.load( [ 'posx.jpg', 'negx.jpg', 'posy.jpg', 'negy.jpg', 'posz.jpg', 'negz.jpg' ] );
 
 				scene = new THREE.Scene();
