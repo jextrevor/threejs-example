@@ -20,7 +20,7 @@ pitchUp = 0;
 pitchDown = 0;
 yawLeft = 0;
 yawRight = 0;
-// ## Initialize everything
+// ## Initialize everything 
 function init() {
 	// test if webgl is supported
 	if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
