@@ -163,9 +163,9 @@ document.addEventListener('keydown',keyDown,false);
 
 				var timer = -0.0002 * Date.now();
 
-				camera.rotateX(yawRight-yawLeft);
- 	camera.rotateY(pitchUp-pitchDown);
- 	camera.rotateZ(rollRight-rollLeft);
+				camera.rotateY((yawRight-yawLeft)*0.3);
+ 	camera.rotateX((pitchUp-pitchDown)*0.3);
+ 	camera.rotateZ((rollRight-rollLeft)*0.3);
 
 				renderer.render( scene, camera );
 
