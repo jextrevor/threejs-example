@@ -29,31 +29,12 @@ function init() {
 	camera = new THREE.Camera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 
 	// create the Scene
-	scene = new THREE.Scene();
-	
-	// ## Begining of the Skybox Code
-	
-	// load the cube textures
-	var urlPrefix	= "images/Bridge2/";
-	var urls = [ urlPrefix + "posx.jpg", urlPrefix + "negx.jpg",
-			urlPrefix + "posy.jpg", urlPrefix + "negy.jpg",
-			urlPrefix + "posz.jpg", urlPrefix + "negz.jpg" ];
-	var textureCube	= THREE.ImageUtils.loadTextureCube( urls );
-	
-	// init the cube shadder
-	var shader	= THREE.ShaderUtils.lib["cube"];
-	var uniforms	= THREE.UniformsUtils.clone( shader.uniforms );
-	uniforms['tCube'].texture= textureCube;
-	var material = new THREE.MeshShaderMaterial({
-		fragmentShader	: shader.fragmentShader,
-		vertexShader	: shader.vertexShader,
-		uniforms	: uniforms
-	});
+	var textureCube = new THREE.CubeTextureLoader()
+					.setPath( 'textures/cube/Bridge2/')
+					.load( [ 'posx.jpg', 'negx.jpg', 'posy.jpg', 'negy.jpg', 'posz.jpg', 'negz.jpg' ] );
 
-	// build the skybox Mesh
-	skyboxMesh	= new THREE.Mesh( new THREE.CubeGeometry( 100000, 100000, 100000, 1, 1, 1, null, true ), material );
-	// add it to the scene
-	scene.addObject( skyboxMesh );
+				scene = new THREE.Scene();
+				scene.background = textureCube;
 
 	// ## End of the Skybox Code
 
