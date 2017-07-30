@@ -68,7 +68,6 @@ function animate() {
 	// relaunch the 'timer' 
 	requestAnimationFrame( animate );
 	// update the stats
-	stats.update();
 }
 
 var keyDown = function(event){
