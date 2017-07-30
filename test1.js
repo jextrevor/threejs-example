@@ -17,7 +17,7 @@ yawRight = 0;
 // ## bootstrap functions
 // initialiaze everything
 init();
-// make it move			
+// make it movee		
 animate();
 
 // ## Initialize everything
