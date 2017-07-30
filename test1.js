@@ -83,8 +83,8 @@ function animate() {
 function render() {
 	// move the camera based on a timer
 	var timer = - new Date().getTime() * 0.0002; 
-	camera.position.x = 1000 * Math.cos( timer );
-	camera.position.z = 1000 * Math.sin( timer );
+	camera.rotation.x = 1000 * Math.cos( timer );
+	camera.rotation.z = 1000 * Math.sin( timer );
  
 
 	// actually display the scene in the Dom element
