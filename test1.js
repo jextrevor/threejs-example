@@ -47,7 +47,7 @@ var ambient = new THREE.AmbientLight( 0x050505 );
 				pointLight = new THREE.PointLight( 0xffaa00, 2 );
 				pointLight.position.set( 2000, 1200, 10000 );
 				scene.add( pointLight );
-	// ## End of the Skybox Code
+	// ## End of the Skybox Code 
 
 	// create the container element
 	container = document.createElement( 'div' );
